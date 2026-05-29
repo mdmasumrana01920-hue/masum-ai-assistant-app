@@ -1,0 +1,14 @@
+name: Build Android APK
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ArtemGovorov/buildozer-action@v1
+        with:
+          command: buildozer android debug
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Masum-AI-App
+          path: bin/*.apk
